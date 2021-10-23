@@ -5,4 +5,4 @@ This project contains the source code of the paper entitled "Online Aircraft Sta
 * matplotlib
 * numpy
 * tqdm
-* Pytorch 1.9
+* Pytorch 1.9.1

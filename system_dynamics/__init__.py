@@ -31,6 +31,7 @@ class Sys_dynamics():
         Sun, Bo, and Erik-Jan van Kampen. 
         "Incremental model-based global dual heuristic programming for flight control." 
         IFAC-PapersOnLine 52.29 (2019): 7-12.
+        https://doi.org/10.1016/j.ifacol.2019.12.613
         """
 
         # 
