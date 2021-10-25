@@ -1,2 +1,4 @@
 .vscode/
 *.pyc
+.figures/
+.system_dynamics/__pycache__
