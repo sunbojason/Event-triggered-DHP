@@ -2,30 +2,8 @@ import numpy as np
 class Sys_dynamics():
     def __init__(self) -> None:
         pass
-    
-    def f16_lateral(self, x, u, dt):
-        """
-        Stevens, Brian L., Frank L. Lewis, and Eric N. Johnson. 
-        "Aircraft control and simulation: dynamics, controls design, and autonomous systems." 
-        John Wiley & Sons, 2015."""
 
-        # in rad and rad/s
-        A = np.array([[-0.3220,0.0640,0.0364,-0.9917,0.0003,0.0008],
-        [0,0,1,0.0037,0,0],
-        [-30.6492,0,-3.6784,0.6646,-0.7333,0.1315],
-        [8.5396,0,-0.0254,-0.4764,-0.0319,-0.0620],
-        [0,0,0,0,-20.2,0],
-        [0,0,0,0,0,-20.2],
-        ])
-        B = np.array([[0,0],[0,0],[0,0],[0,0],
-        [20.2,0],[0,20.2]])
-        
-        d_x = np.matmul(A,x) + np.matmul(B,u)
-        x_next = d_x*dt + x
-
-        return x_next
-
-    def missile(self, x, u, dt):
+    def launch_vehicle(self, x, u, dt):
         
         """
         Sun, Bo, and Erik-Jan van Kampen. 
