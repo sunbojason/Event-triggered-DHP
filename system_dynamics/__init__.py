@@ -96,6 +96,13 @@ class Sys_dynamics():
         
     def f16_lateral(self, x, u, dt):
         
+        """
+        Brian L Stevens, Frank L Lewis, and Eric N Johnson.
+        Aircraft control and simulation:  dynamics, controlsdesign, and autonomous systems. 
+        John Wiley & Sons, 2015.
+        """
+
+        # 
         A = np.array([[-0.3220,0.0640,0.0364,-0.9917,0.0003,0.0008],
         [0,0,1,0.0037,0,0],
         [-30.6492,0,-3.6784,0.6646,-0.7333,0.1315],
@@ -110,5 +117,65 @@ class Sys_dynamics():
 
         return x_next
 
+    def sate_liqslosh(self, x, u, dt):
+        """
+        Sun, Bo, and Erik-Jan van Kampen. 
+        "Incremental model-based heuristic dynamic programming 
+        with output feedback applied to aerospace system identification and control." 
+        2020 IEEE Conference on Control Technology and Applications (CCTA). IEEE, 2020.
+        https://doi.org/10.1109/CCTA41146.2020.9206261
+        """
+        
+        # states
+        theta = x[0]
+        dTheta = x[1]
+        psi = x[2]
+        dPsi = x[3]
+
+        # input
+        fs = u[0]
+        Ms = u[1]
+
+        # model A
+        ms = 600 #  kg
+        Is = 720 # kg/m^2
+        mp = 100 # 100kg
+        Ip = 90 # kg/m^2
+        a = 0.3 # m
+        b = 0.3 # m
+        Fs = 500 # N
+        kappa = 0.19 # kg*m^2/s
+
+        # # model B
+        # ms = 1200 #  kg
+        # Is = 900 # kg/m^2
+        # mp = 50 # 100kg
+        # Ip = 80 # kg/m^2
+        # a = 0.2 # m
+        # b = 0.5 # m
+        # Fs = 600 # N
+        # kappa = 0.19 # kg*m^2/s
+
+        bStar = ms*b/(ms + mp)
+        aStar = mp*a/(ms + mp)
+
+        T1 = (Is+ms*b**2) - bStar*ms*b - bStar*mp*a*np.cos(psi)
+        T2 = bStar*mp*a*np.cos(psi)
+        T3 = Ms + b*fs + kappa*dPsi - bStar*fs - bStar*mp*a*(dPsi + dTheta)**2*np.sin(psi)
+
+        T4 = aStar*(np.sin(psi)*(Fs - ms*b*dTheta) + np.cos(psi)*fs) + kappa*dPsi
+        T5 = aStar*np.cos(psi)*ms*b
+        T6 = mp*a**2 + Ip - aStar*mp*a
+
+
+
+        d2Theta = (T3*T6-T2*T4)/((T6-T5)*T2+T1*T6)
+        d2Psi = (T1*T4+(T6-T5)*T3)/(T2*(T5-T6)-T1*T6)
+
+        d_x = np.array([dTheta, d2Theta, dPsi, d2Psi])
+
+        x_next = d_x*dt + x
+
+        return x_next
 
 

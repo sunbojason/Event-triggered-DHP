@@ -9,3 +9,7 @@ This project contains the source code of the paper entitled "Intelligent Aircraf
 * tqdm
 * Pytorch 1.9.1
 * pickle
+
+## Quick start
+    $ git clone https://github.com/sunbojason/Event-triggered-DHP.git
+    $ cd Event-triggered-DHP
