@@ -1,5 +1,5 @@
 # Event-triggered-DHP
-This project contains the source code of the paper entitled "Intelligent Aircraft Stabilization Control with Event-Triggered Scheme". The paper has been accepted to CEAS EuroGNC 2022.
+This project contains the source code of the paper entitled "Intelligent Aircraft Stabilization Control with Event-Triggered Scheme". The paper has been accepted to be published and presented on CEAS EuroGNC 2022.
 
  It is noteworthy that due to the random initialization of ANNs, the simulation results can differ at each run.
 ## Requirement
