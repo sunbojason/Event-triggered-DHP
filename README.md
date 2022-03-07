@@ -14,11 +14,11 @@ This project contains the source code of the paper entitled "Intelligent Aircraf
     $ git clone https://github.com/sunbojason/Event-triggered-DHP.git
     $ cd Event-triggered-DHP
 ## Citation
-  @inproceedings{sun2022event_3,
-  title={Intelligent Aircraft Stabilization Control with Event-Triggered Scheme},
-  author={Sun, Bo and Liu, Cheng and Dally, Killian van Kampen, Erik-Jan},
-  booktitle={The 6th CEAS Conference on Guidance, Navigation and Control (EuroGNC)},
-  year={2022},
-  organization={CEAS},
-  note = {In press}
-}
+    @inproceedings{sun2022event_3,
+    title={Intelligent Aircraft Stabilization Control with Event-Triggered Scheme},
+    author={Sun, Bo and Liu, Cheng and Dally, Killian van Kampen, Erik-Jan},
+    booktitle={The 6th CEAS Conference on Guidance, Navigation and Control (EuroGNC)},
+    year={2022},
+    organization={CEAS},
+    note = {In press}
+    }
